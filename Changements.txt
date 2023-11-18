@@ -1,0 +1,47 @@
+=> Installed Libraries:
+    axios => Client-Side API Client.
+    paypal-rest-sdk => Paypal's API.
+    morgan + chalk => Both of these will show up Traffic with "colored text" in CMD (or Terminal).
+    mysql2 => mysql library but with promises ( howa dak async/await )
+    nodemailer => library for sending emails.
+    (...)
+    Remove "/node-modules" folder then do "npm install".
+
+=> Updated Files:
+    - db.sql:
+        - Added A few Columns, Modified some.
+    - [Models]:
+        - connection: Just change username:password
+        - <Table>Model.js : Changed the syntax from mysql to mysql2
+        <!!!!> Attention: mysql2 "execute" statements return [results, extraBonusInformation(had indice 1 maghadich n7tajoha)]
+        - Added some other Model methods to get specific data like (GetUnverifiedUserByToken)
+    - [Controllers]:
+        - controller.js:
+            - Added an "else" clause
+            - You have an error there you have to fix, check the controller.js file for more info.
+        - <Table>Controller.js :
+            - Changed the syntax from mysql to mysql2 (from callbacks to Async/Await)
+            [!!!] But it's still the same code
+        - UserController.js:
+            - Added Nodemailer code at the very top.
+            - Modified signup (POST) code. (Added Captcha, and automatic token link mail sender)
+            - Added verifySignup (GET) method.
+    - [Views]:
+        - signup.ejs:
+            - Added Captcha + its <script>
+            - Added <script> to verify if Captcha is checked or no.
+    - .env:
+        It's a file that has environement variables, like CAPTCHA KEYS (public and private) and PAYPAL KEYS (public and private).
+        It can also have DB_HOST and DB_PASSWORD ect.
+        to Access data you do process.env.NAME_OF_VARIABLE
+        but first in index.js do "require('dotenv').config()"
+    - folder utilities:
+        Here we put extra functionalities like log (Traffic logger)
+        - folder log:
+            - Just Text Parsing to show colorful logging text (see the terminal).
+        - folder payements:
+            - TODO
+    - index.js:
+        - Added a few routes (1 or maybe 2);
+        - Some Additional code at the very top + more "require"s
+        - Unfinished Paypal backend code at the very bottom...

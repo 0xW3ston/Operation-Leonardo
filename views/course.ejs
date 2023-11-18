@@ -1,0 +1,13 @@
+<form method="POST" action="/pay">
+  
+    <label for="currency">What Course to buy:</label>
+    <select id="currency" name="courId">
+       <% cours.map((cour) => { %>
+          <option value="<%=cour.id%>"><%= cour.titre %></option>
+       <% })%>
+    </select>
+  
+    <button type="submit">Pay with PayPal</button>
+  </form>
+
+      

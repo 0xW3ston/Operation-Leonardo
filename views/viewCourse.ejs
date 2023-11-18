@@ -1,0 +1,127 @@
+<meta charset="UTF-8">
+<title>PDF.js Test</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <canvas id="pdf-render"></canvas>
+        <div>
+          <button id="precedent">Previous</button>
+          <button id="next">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script async defer>
+    
+// const a="<%= cour.cours_path %>";const ab="<%= cour.password %>";pdfjsLib["getDocument"]({url:a,password:ab|| null})["promise"]["then"](function(_0xb957x2){_0xb957x2["getPage"](1)["then"](function(_0xb957x3){const _0xb957x4=document["getElementById"]("pdf-render");const _0xb957x5=_0xb957x4["getContext"]('2d');const _0xb957x6=_0xb957x3["getViewport"]({scale:1.0});_0xb957x4["width"]= _0xb957x6["width"];_0xb957x4["height"]= _0xb957x6["height"];const _0xb957x7={canvasContext:_0xb957x5,viewport:_0xb957x6,enableAnnotationRendering:true};const _0xb957x8=_0xb957x3["render"](_0xb957x7);_0xb957x8["promise"]["then"](function(){const _0xb957x9={previous:37,next:39};function _0xb957xa(_0xb957xb){const _0xb957xc=_0xb957xb["keyCode"];if(_0xb957xc=== _0xb957x9["previous"]){if(_0xb957xd<= 1){return};_0xb957xd--}else {if(_0xb957xc=== _0xb957x9["next"]){if(_0xb957xd>= _0xb957x2["numPages"]){return};_0xb957xd++}else {return}};_0xb957xe(_0xb957xd)}document["addEventListener"]('keydown',_0xb957xa);let _0xb957xd=1;function _0xb957xe(_0xb957xd){_0xb957x2["getPage"](_0xb957xd)["then"](function(_0xb957x3){const _0xb957x6=_0xb957x3["getViewport"]({scale:1.0});_0xb957x4["width"]= _0xb957x6["width"];_0xb957x4["height"]= _0xb957x6["height"];const _0xb957x7={canvasContext:_0xb957x5,viewport:_0xb957x6,enableAnnotationRendering:true};const _0xb957x8=_0xb957x3["render"](_0xb957x7);_0xb957x8["promise"]["then"](function(){console["log"]('Page rendered')})})}})})})
+
+
+  const url = "<%= cour.cours_path %>"; //replace with your pdf url or file path
+  const pdfPassword = "<%= cour.password %>";
+  
+  // Check if the pdf is password protected or not
+  // Load the PDF document
+  pdfjsLib.getDocument({
+    url: url,
+    password: pdfPassword || null
+  }).promise.then(function(pdf) {
+    // Get the first page
+    pdf.getPage(1).then(function(page) {
+      const canvas = document.getElementById("pdf-render");
+      const context = canvas.getContext('2d');
+
+      // Render the page on the canvas
+      const viewport = page.getViewport({ scale: 1.0 });
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+
+      const renderContext = {
+        canvasContext: context,
+        viewport: viewport,
+        enableAnnotationRendering: true // enable annotations rendering
+      };
+      
+      const renderTask = page.render(renderContext);
+      
+      // Wait for rendering to finish
+      renderTask.promise.then(function() {
+        // Enable built-in arrow navigation
+        const arrowKeys = {
+          previous: 37, //left arrow
+          next: 39 //right arrow
+        };
+        
+        function arrowEventHandler(e) {
+          const key = e.keyCode;
+          if (key === arrowKeys.previous) {
+            if (pageNum <= 1) {
+              return;
+            }
+            pageNum--;
+          } else if (key === arrowKeys.next) {
+            if (pageNum >= pdf.numPages) {
+              return;
+            }
+            pageNum++;
+          } else {
+            return;
+          }
+          renderPage(pageNum);
+        }
+
+        function prevNextHandler(action){
+            console.log("tes");
+            if(action === 'next'){
+                if (pageNum >= pdf.numPages) {
+                    return;
+                }
+                pageNum++;
+            }else if(action === 'precedent'){
+                if (pageNum <= 1) {
+                return;
+                }
+                pageNum--;
+            }else {
+                return;
+            }
+            renderPage(pageNum);
+        }
+
+        const nextBtn = document.getElementById('next')
+        nextBtn.addEventListener('click', () => {
+            prevNextHandler('next');
+        });
+
+        const precBtn = document.getElementById('precedent')
+        precBtn.addEventListener('click', () => {
+            prevNextHandler('precedent');
+        });
+
+        document.addEventListener('keydown', arrowEventHandler);
+
+        // Render a specific page of the PDF
+        let pageNum = 1;
+        function renderPage(pageNum) {
+          pdf.getPage(pageNum).then(function(page) {
+            const viewport = page.getViewport({ scale: 1.0 });
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            const renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+              enableAnnotationRendering: true
+            };
+            const renderTask = page.render(renderContext);
+            renderTask.promise.then(function() {
+              console.log('Page rendered');
+            });
+          });
+        }
+      });
+    });
+  });
+</script>

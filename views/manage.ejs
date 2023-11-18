@@ -1,0 +1,11 @@
+<% if(user === "secretaire"){ %>
+    <p class="manage">
+        <a href="/manageEvents" class="btn manageBtn">Les Evenements</a>
+        <a href="/manageFormations" class="btn manageBtn">Les Formations</a>
+        <a href="/manageFormateurs" class="btn manageBtn">Les Formateurs</a>
+        <a href="/manageCours" class="btn manageBtn">Les Cours</a>
+
+    </p>
+    <% }else if(user === "formateur"){ %>
+        <a href="/manageCours" class="btn manageBtn">Les Cours</a>
+    <% }else{ %>  page not available <% } %>

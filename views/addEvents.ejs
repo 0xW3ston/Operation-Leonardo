@@ -1,0 +1,43 @@
+<% if(user === "secretaire"){ %>
+
+    <h3 class="manage" > Ajouter un evenement </h3>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+
+    <form method="post" action="/addEvents" enctype="multipart/form-data" class="manageForm">
+    
+        <table cellpadding="20" >
+            <tr>
+                <td><label for="label">Title :</label></td>
+                <td><input type="text" id="label" name="label" required class="logInp"></td>
+            </tr>
+            <tr>
+                <td><label for="caption">Caption :</label></td>
+                <td><textarea  id="caption" cols="100" name="caption" required class="logInp"></textarea></td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;"><label for="description">Description :</label></td>
+                <td><textarea  id="description" rows="30" cols="100" name="description" required class="logInp"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="file-field input-field">
+                        <div id="inplist">
+                        <div class="btn " id="sp" >
+                          <input type="file" name="myImage" id="inpImage"  accept=".jpeg,.jpg,.png,.gif,.webp">
+                        </div> 
+                      </div>
+                     <div class="file-path-wrapper">
+                       <input class="file-path validate" type="text" value="Ajouter une image"> 
+                      </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Ajouter" class="logBtn btn actionBtn"></td>
+            </tr>
+        </table>
+    
+
+    </form>
+
+    <% }else{ %>  page not available <% } %>

@@ -1,0 +1,133 @@
+<section class="container" >
+    <img src="images/cover.png" alt="" id="cover">
+</section>
+
+<section class=" container">
+    <h3 class="title">Actualités</h3>
+    <div class="actualite">
+    
+    <div id="carouselExampleCaptions" class="carousel slide  mb-5 " data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="6"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="<%= images.find((img)=> img.eventid ===  events[0].id).path %>" class="d-block w-100 slidepic" alt="...">
+            <div class="carousel-caption d-none d-md-block ">
+              <h5><a href="eventDetails/<%= events[0].id %>"> <%= events[0].label %> </a></h5>
+              <p> <%= events[0].caption %> </p>
+            </div>
+          </div>
+        <% for(let i = 1 ; i< 2 ;i++ ){%>
+            <div class="carousel-item ">
+              <img src="<%- images.find(img=>img.eventid ===  events[i].id).path %>" class="d-block w-100 slidepic" alt="...">
+              <div class="carousel-caption d-none d-md-block ">
+                <h5><a href="eventDetails/<%= events[i].id %>"> <%= events[i].label %> </a></h5>
+                <p> <%= events[i].caption %> </p>
+              </div>
+            </div>
+        <%}%>
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </button>
+      </div>
+    </div>
+</section>
+  <!-- ------------------------------------------------------------------------------------ -->
+<section class="contain-2 container ">
+    <div class="CSSgal ">
+        <div class="title">
+            <h3 class="title"> Nos formations  </h3>
+            <p>Recherchez une attestation de haute niveau qui corresponde a votre vie</p>
+        </div>
+        
+        <div class="slider sslider">
+          <div class="slide">
+          <% for(let i =0 ; i< 4;i++){%>
+              <span class="slideContent grid-item">
+                  <img src="<%- formationImages.find(img=>img.formationid ===  formationLongDuree[i].id).path %>" >
+                  <a href="/formationDetails/<%= formationLongDuree[i].id %>"><h5><%= formationLongDuree[i].label %></h5></a>
+              </span>
+         <% }%>
+        </div>
+        <div class="slide">
+         <% for(let i =4 ; i< 8;i++){%>
+              <span class="slideContent grid-item">
+                  <img src="<%- formationImages.find(img=>img.formationid ===  formationLongDuree[i].id).path %>" >
+                  <a href="/formationDetails/<%= formationLongDuree[i].id %>"><h5><%= formationLongDuree[i].label %></h5></a>
+              </span>
+         <% }%>
+        </div>
+            <div class="slide">
+                <span class="slideContent grid-item">
+                    <img src="images/img1.jpg" >
+                    <h5>formation</h5>
+                </span>
+            </div>
+        </div>
+        <div class="bullets">
+          <a onclick="p1()" id="s1" class="page">1</a>
+          <a onclick="p2()" id="s2" class="page">2</a>
+          <a onclick="p3()" id="s3" class="page">3</a>
+          <a href="/allFormations#formationLongDuree" class="vt">Voir tous les formations</a>
+        </div>
+       
+    </div>
+</section>
+  <!-- ---------------------------------------------------------------------------- -->
+
+  <section class="contain-2 container ">
+    <div class="CSSgal ">
+        <div class="title">
+            <p>Formation que vous pouvez terminer en un jour </p>
+        </div>
+        
+        <div class="slider sslider1">
+          <div class="slide">
+          <% for(let i =0 ; i< 4;i++){%>
+              <span class="slideContent grid-item">
+                  <img src="<%- formationImages.find(img=>img.formationid ===  formation1jDuree[i].id).path %>" >
+                  <a href="/formationDetails/<%= formation1jDuree[i].id %>"><h5><%= formation1jDuree[i].label %></h5></a>
+              </span>
+         <% }%>
+        </div>
+        <div class="slide">
+         <% for(let i =4 ; i< 8;i++){%>
+              <span class="slideContent grid-item">
+                  <img src="<%- formationImages.find(img=>img.formationid ===  formation1jDuree[i].id).path %>" >
+                  <a href="/formationDetails/<%= formation1jDuree[i].id %>"><h5><%= formation1jDuree[i].label %></h5></a>
+              </span>
+         <% }%>
+        </div>
+            <div class="slide">
+                <span class="slideContent grid-item">
+                    <img src="images/img1.jpg" >
+                    <h5>formation</h5>
+                </span>
+            </div>
+        </div>
+        <div class="bullets">
+          <a onclick="p11()" id="s11" class="page">1</a>
+          <a onclick="p21()" id="s21" class="page">2</a>
+          <a onclick="p31()" id="s31" class="page">3</a>
+          <a href="/allFormations#formation1jDuree" class="vt">Voir tous les formations</a>
+        </div>
+       
+    </div>
+    </section>
+
+
+
+<%- include('partials/footer') %>

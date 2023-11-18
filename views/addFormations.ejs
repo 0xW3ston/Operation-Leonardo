@@ -1,0 +1,47 @@
+<% if(user === "secretaire"){ %>
+    <h3 class="manage" > Ajouter une formation</h3>
+
+    
+    <form method="post" action="/addFormations" enctype="multipart/form-data" class="manageForm">
+        <table cellpadding="20">
+            <tr>
+                <td><label for="label">Title :</label></td>
+                <td><input type="text" id="label" name="label" required class="logInp"></td>
+            </tr>
+            <tr>
+                <td><label for="duree">duree :</label></td>
+                <td>
+                    <select name="duree" id="duree" required class="logInp">
+                        <option value="1">1 jour</option>
+                        <option value="2">Plus que 1 jour</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;"><label for="description">Description :</label></td>
+                <td><textarea  id="description" rows="30" cols="100" name="description" required class="logInp"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="file-field input-field">
+                        <div id="inplist">
+                        <div class="btn " id="sp" >
+                          <input type="file" name="myImage" id="inpImage"  accept=".jpeg,.jpg,.png,.gif,.webp">
+                        </div>
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" value="Ajouter une image">
+                      </div>
+                </td>
+            </tr>
+
+           
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Ajouter"class="logBtn btn actionBtn"></td>
+            </tr>
+        </table>
+
+    </form>
+
+    <% }else{ %>  page not available <% } %>

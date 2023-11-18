@@ -1,0 +1,20 @@
+<div class="row w-75 ml-5 mt-5">
+    <div class="col-sm"> 
+        <a name="formation1jDuree">
+            <h3>Formation en un jour </h3>
+            <% formations.forEach((f) =>{ %>
+                <% if(f.duree === 1){ %>
+                    <p><a href="/formationDetails/<%= f.id %>"><%= f.label %></a></p>
+            <% }}) %>
+        </a>
+    </div>
+    <div class="col-sm"> 
+        <a name="formationLongDuree">
+            <h3>Formation de plus d'un jour </h3>
+            <% formations.forEach((f) =>{ %>
+                <% if(f.duree === 2){ %>
+                    <p><a href="/formationDetails/<%= f.id %>"><%= f.label %></a></p>
+            <% }}) %>
+        </a>
+    </div>
+</div>

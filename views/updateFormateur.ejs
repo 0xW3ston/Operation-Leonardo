@@ -1,0 +1,40 @@
+<% if(user === "secretaire"){ %>
+
+    <h3 class="manage" > Modifier un formateur </h3>
+
+
+    
+    <form method="post" action="/updateformateur"  class="manageForm">
+        <% if (message2) { %>
+            <p><%= message2 %></p>
+          <% } %>
+        <table cellpadding="20" align="center">
+            <tr>
+                <td><label for="id">Id :</label></td>
+                <td><input type="number" id="id" name="id" value="<%= formateur.id %>"  class="logInp" readonly></td>
+            </tr>
+            <tr>
+                <td><label for="nom">Nom :</label></td>
+                <td><input id="nom" type="text" name="nom" value="<%= formateur.nom %>" required class="logInp"></td>
+            </tr>
+            <tr>
+                <td><label for="prenom">Prenom :</label></td>
+                <td><input id="prenom" type="text" value="<%= formateur.prenom %>" name="prenom" required class="logInp"></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email :</label></td>
+                <td><input type="email" id="email" value="<%= formateur.email %>" name="email" required class="logInp"></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password :</label></td>
+                <td><input type="password" id="password" name="password" value="12345"  class="logInp"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Modifier" class="logBtn btn actionBtn"></td>
+            </tr>
+        </table>
+
+    </form>
+
+    <% }else{ %>  page not available <% } %>

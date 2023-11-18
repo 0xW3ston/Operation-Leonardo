@@ -1,0 +1,27 @@
+<% if(user === "secretaire"){%>
+  <p class="manage mt-1">
+    <a href="/addformateur" class="btn manageBtn" >Ajouter un formateur</a>
+  </p>
+      <table cellspacing="0" border="1" align="center" cellpadding="20" class="affTable">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Email</th>
+        <th>Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% formateurs.forEach(item => { %>
+        <tr>
+          <td><%= item.nom %></td>
+          <td><%= item.prenom %></td>
+          <td><%= item.email %></td>
+          <td align="center"><a href="/updateFormateur/<%= item.id %>" class="btn actionBtn">update</a>
+           <a href="/deleteFormateur/<%= item.id %>"  onclick="return confirm('vous etes entrain de supprimer le formateur  \' <%= item.nom  + item.prenom %> \' !')" class="btn actionBtn">delete</a></td>
+        </tr>
+        <% }); %> <% }else{ %>  page not available<% } %>
+      </tbody>
+  </table>
+  

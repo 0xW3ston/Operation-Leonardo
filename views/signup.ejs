@@ -1,0 +1,53 @@
+<section class="loginPage ">
+    <form method="post" action="/signup" class="loginForm " onsubmit="validateForm();">
+      <h3>S'inscrire</h3>
+
+      <% if (message2) { %>
+        <p><%= message2 %></p>
+      <% } %>
+      
+      <table cellpadding="20">
+          <tr>
+              <td><label for="email">Email :</label></td>
+              <td><input type="email" id="email" name="email" required class="logInp"></td>
+          </tr>
+          <tr>
+            <td><label for="nom">Nom :</label></td>
+            <td><input type="text" id="nom" name="nom" required class="logInp"></td>
+        </tr>
+        <tr>
+          <td><label for="prenom">Prenom :</label></td>
+          <td><input type="text" id="prenom" name="prenom" required class="logInp"></td>
+      </tr>
+          <tr>
+              <td><label for="password">Password :</label></td>
+              <td><input type="password" id="password" name="password" required class="logInp"></td>
+          </tr>
+          <tr>
+              <td colspan="2"><div class="g-recaptcha" data-sitekey="<%= process.env.CAPTCHA_SITE_KEY %>" data-type="image" data-theme="light"></div></td>
+              <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+              
+          </tr>
+          <tr>
+            <td></td>
+            <td><input type="submit" value="S'inscrire" class="logBtn"></td>
+          </tr>
+      </table>
+      <p>Si vous avez deja un compte  <a href="/login"> Se connecter</a></p>
+    </form>
+  
+
+  </section>
+  <!-- Youssef's reCAPTCHA validation Script-->
+  <script>
+    function validateForm() {
+      // check if the user has completed the reCAPTCHA challenge
+      const response = grecaptcha.getResponse();
+      if (response.length === 0) {
+        alert("Please complete the reCAPTCHA challenge to submit the form");
+        return false;
+      }
+      // submit the form if the reCAPTCHA challenge has been completed
+      return true;
+    }
+  </script>

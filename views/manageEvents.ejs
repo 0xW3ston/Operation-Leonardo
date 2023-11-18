@@ -1,0 +1,23 @@
+<% if(user === "secretaire"){%>
+  <p class="manage mt-1">
+    <a href="/addEvents" class="btn manageBtn">Ajouter un Evenement</a>
+  </p>
+    <table cellspacing="0" border="1" align="center" cellpadding="20" class="affTable">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Legend</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% events.forEach(item => { %>
+      <tr>
+        <td><%= item.label %></td>
+        <td><%= item.caption %></td>
+          <td align="center"><a href="/updateEvent/<%= item.id %>" class="btn actionBtn" >update</a>
+           <a href="/deleteEvent/<%= item.id %>" onclick="return confirm('vous etes entrain de supprimer l\'evenement \' <%= item.label %> \' !')" class="btn actionBtn">delete</a></td>
+      </tr>
+    <% }); %> <% }else{ %>  page not available <% } %>
+  </tbody>
+</table>

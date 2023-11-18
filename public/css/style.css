@@ -1,0 +1,493 @@
+*{
+  font-family:Arial, Helvetica, sans-serif;
+  color: rgb(113, 114, 119); 
+}
+
+body{
+  background-color: rgb(235, 238, 240);
+ 
+}
+
+
+a:hover{
+  text-decoration: none;
+  
+}
+
+/* ----------------------- Header -------------------------------- */
+#logo{
+  height: 70px;
+  width: 70px;
+  margin-left: 40px;
+}
+.navbar{
+  padding-right: 0;
+  font-weight: bold;
+  width: 100%;
+  font-size:medium;
+  height: 100px;
+  padding-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.ml{
+  margin-left: 20px;
+}
+.nbtn{
+  background-color: azure;
+  color: black;
+  font-weight: bold;
+  font-size: 0.8em;
+  opacity: 0.8;
+  box-shadow: 1px 1px 10px rgb(159, 182, 197);
+}
+.nlink{
+  color: rgb(26, 26, 26) ;
+}
+.navbar-toggler{
+  margin-right: 30px;
+}
+.search{
+  opacity: 0.7;
+  height: 35px;
+  font-size: small;
+  width: 600px;
+}
+@media screen and (max-width: 992px) {
+  .navbar-nav{
+    opacity: 1;
+    background-color: aliceblue;
+    text-align: center;
+    
+    margin-right: 100px;
+    position: absolute;
+    right: 0px;
+    margin-right: 10px;
+  }
+  .nbtn{
+    width: 210px;
+    margin-left: 5vw;
+    margin-bottom: 10px;
+  }
+ 
+}
+
+/* ------------------------ Cover --------------------------------- */
+.container{
+  text-align: center;
+  width: 90%;
+}
+
+#cover{
+  width: 100%;
+  border-radius: 2px;
+  margin-bottom: 60px;
+  margin-top: 20px;
+}
+
+/* -------------------------- Acceuil ------------------------------------ */
+                  /* ---------- News -------- */
+
+.actualite{
+  display: flex;
+  justify-content: center;
+  
+}
+
+.slidepic{
+  height: 400px;
+}
+.carousel{
+  margin-top: 40px;
+  text-align: center;
+  width: 80%;
+  
+  
+}
+.carousel-caption{
+  background-color: rgb(20, 20, 20,0.9);
+  text-align: right;
+}
+carousel-caption a {
+  color: rgb(255, 255, 255);
+}
+.carousel-caption h5{
+  font-weight: bolder;
+  font-size: 1.5em;
+
+}
+.carousel-caption p{
+  font-weight: bold;
+  font-size: 1.5em;
+
+  color: rgb(255, 255, 255);
+}
+
+                           /* --------- Formations ---------- */
+
+
+.title{
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-align: left;
+  color: rgb(97, 51, 51);
+}
+.contain-2{
+  padding-top: 20px;
+  /* margin-left: 60px;
+  margin-right: 60px; */
+  margin-bottom: 40px;
+  /* width: 95%; */
+}
+.CSSgal {
+	overflow: hidden;
+	height: 100%; /* Or set a fixed height */
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+/* SLIDER */
+
+.CSSgal .slider {
+	height: 100%;
+	white-space: nowrap;
+	font-size: 0;
+	transition: 0.8s;
+  margin-top: 30px;
+}
+
+/* SLIDES */
+
+.CSSgal .slider > * {
+	font-size: 1rem;
+	display: inline-block;
+	white-space: normal;
+	vertical-align: top;
+	height: 100%;
+	width: 100%;
+}
+
+/* NAVIGATION */
+
+.CSSgal .bullets {
+	bottom: 0;
+	padding: 10px 0;
+	width: 100%;
+	text-align: center;
+
+}
+.CSSgal .bullets > .page {
+	display: inline-block;
+	width:       30px;
+	height:      30px;
+	line-height: 30px;
+	text-decoration: none;
+	text-align: center;
+	background: rgba(255, 255, 255, 1);
+	-webkit-transition: 0.3s;
+					transition: 0.3s;
+          background-color: aliceblue;
+          box-shadow: 1px 1px 10px rgb(159, 182, 197);
+}
+
+.CSSgal .bullets > .page:hover {
+	background: rgba(135, 182, 218, 0.7) ;
+  cursor: pointer;
+}
+
+.CSSgal .page {
+	border-radius: 50%;
+	margin: 0 3px;
+	color: rgba(0,0,0,0.8);
+	text-decoration: none;
+}
+
+.CSSgal img{
+  width: 18vw;
+  max-width: 200px;
+  height: 20vw;
+  max-height: 200px;
+
+  border-radius: 5px;
+  padding: 0 10px;
+  
+}
+.slider .slideContent{
+  display: inline-table;
+  height: 10vw;
+  border: 1px rgb(37, 37, 78) solid;
+  border-radius: 2px;
+  padding-top: 10px;
+  margin: 0 10px;
+}
+.slider h5{
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.53);
+  color: rgb(37, 37, 78);
+  font-weight: bolder;
+  height: 70px;
+  padding-top: 10px;
+  margin-top: 10px;
+  max-width:200px;
+  transition: background-color 0.5s;
+  padding: 10px;
+
+}
+.slider h5:hover{
+  background-color: rgba(207, 206, 206, 0.53);
+}
+.vt{
+  position: absolute;
+  right: 100px;
+}
+/* -------------------------- formation1J ---------------------------- */
+.formation1J img{
+  width: 250px;
+  height: 300px;
+
+}
+.formation1J .middle-grid{
+  margin: 0  90px;
+}
+.formation1J .content{
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+/* ------------------------ login and signup -------------------------- */
+
+.loginPage img{
+  width: 120%;
+}
+.loginForm{
+  position: absolute;
+  top:11vw;
+  left: 27vw;
+  right: 27vw;
+  background-color: rgba(217, 231, 249, 0.573);
+  padding: 2vw 5vw;
+  border-radius: 6px;
+  box-shadow: 1px 1px 10px rgb(159, 182, 197);
+  font-weight: bold;
+  color: rgb(113, 114, 119);
+}
+.loginForm input{
+  background-color: rgba(236, 249, 255, 0.979);
+  border: none;
+  box-shadow: 1px 1px 10px rgb(159, 182, 197);
+  border-radius: 6px;
+  height: 30px;
+ 
+}
+.loginForm .logInp{
+  width: 120%;
+}
+
+.logBtn{
+  
+  font-weight: bold;
+  width: 16vw;
+  transition: box-shadow 1s , color 1s;
+  margin-bottom: 20px;
+  
+}
+.logBtn:hover{
+  box-shadow: 2px 2px 15px rgb(142, 162, 175);
+  color:rgb(79, 80, 83) ;
+  
+}
+.loginForm h3{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* ----------------------------- Footer ----------------------------------------------- */
+.footer{
+  height: 200px;
+  background-color: rgb(34, 45, 74);
+  overflow: hidden;
+  padding: 40px;
+  box-shadow: 2px 2px 15px rgb(142, 162, 175);
+  border-radius: 5px;
+
+}
+
+.contact i {
+  display: block;
+  margin-left: 20px;
+  
+}
+
+/* ------------------- */
+#preview img{
+  height: 200px;
+  margin: 10px;
+}
+
+#sp img{
+  height: 100px;
+  width: 100px;
+  margin: 0 0 ;
+}
+#sp input[type=button]{
+  padding: 0 45px;
+
+  margin-bottom: 4px;
+  display: block;
+  margin-top: 0;
+  
+  
+}
+#sp{
+  height: 100px;
+  width: 100px;
+}
+
+
+/* ========================== this new ========== */
+.file-field{
+  position:relative
+}
+.file-field .file-path-wrapper{
+  overflow:hidden;
+  padding-left:10px;
+  width:max-content;
+  margin-top: 80px;
+
+}
+.file-path-wrapper input{
+  width: min-content;
+  padding: 0 0;
+}
+.file-field input.file-path{
+  width:100%
+}
+.input-field input{
+  width:min-content;
+}
+.file-field .btn,.file-field .btn-large,.file-field .btn-small{
+  height:3rem;
+  line-height:3rem
+}
+
+.file-field input[type=file]{
+  position:absolute;
+  top:60;
+  right:0;
+  left:10px;
+  bottom:0;
+  width:200px;
+  margin:0;
+  padding:0;
+  font-size:20px;
+  cursor:pointer;
+  opacity:0;
+  height: 40px;
+
+  filter:alpha(opacity=0)
+}
+.file-field input[type=file]::-webkit-file-upload-button{
+  display:none
+}
+
+.input-field{
+  margin:0;
+  height:100%
+}
+
+/* ========= manage ============= */
+
+.manage{
+  text-align: center;
+  margin-top: 80px;
+}
+.manageBtn{
+  background-color: rgba(217, 231, 249, 0.9);
+  margin: 30px;
+  padding: 20px;
+  font-weight: bold;
+  transition: background-color 1s;
+  box-shadow: 2px 2px 15px rgb(142, 162, 175);
+
+}
+.manage .manageBtn:hover{
+  background-color: rgb(190, 205, 225);
+}
+.affTable{
+  width: 90%;
+}
+.actionBtn{
+  margin-left: 10px;
+  background-color: rgba(217, 231, 249, 0.9);
+  transition: background-color 1s;
+  box-shadow: 2px 2px 15px rgb(142, 162, 175);
+
+}
+.actionBtn:hover{
+  background-color: rgb(190, 205, 225);
+}
+.affTable th{
+  text-align: center;
+}
+.manageForm{
+  margin-top: 40px;
+  margin-left: 50px;
+}
+.preview img {
+  height: 100px;
+  width: 100px;
+}
+.preview  {
+  height: 140px;
+  width: 100px;
+  display: inline-block;
+}
+.preview input[type=button]{
+  padding: 0 45px;
+
+  margin-bottom: 4px;
+  display: block;
+  margin-top: 0;
+  
+}
+.details{
+  background-color: white;
+  text-align: right;
+  width: 70%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 30px;
+  margin-left: 200px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 10px rgb(142, 162, 175);
+}
+.details img{
+  width: 200px;
+  height: 200px;
+}
+textarea{
+  text-align: right;
+}
+
+.gratuit{
+  font-size: 0.5em;
+  background-color: green;
+  color: white;
+  border-radius: 2px;
+  padding: 6px;
+  margin-left: 10px;
+  
+  
+}
+
+.pay{
+  font-size: 0.5em;
+  background-color: rgb(100, 7, 7);
+  color: white;
+  border-radius: 2px;
+  padding: 6px;
+  margin-left: 10px;
+  
+}

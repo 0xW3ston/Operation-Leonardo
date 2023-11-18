@@ -1,0 +1,69 @@
+<% if(user === "secretaire" ){%>
+    <% if(user === "formateur"){ %>
+    <p class="manage mt-1">
+      <a href="/addCours" class="btn manageBtn" >Ajouter un cours</a>
+    </p>
+    <% }; %>
+        <table cellspacing="0" border="1" align="center" cellpadding="20" class="affTable">
+      <thead>
+        <tr>
+          <th>Formateur</th>
+          <th>Titre</th>
+          <th>Montant</th>
+          <th>Pdf</th>
+          <th>Action</th>
+  
+        </tr>
+      </thead>
+      <tbody>
+        <% cours.forEach(item => { %>
+          <tr>
+            <td><%= item.formateur_fullname %></td>
+            <td><%= item.titre %></td>
+            <td><%= item.montant %></td>
+            <td><a href="https://hightower.ddns.net<%= item.cours_path %>"> Cours link </a></td>
+              <td align="center"><a href="/updateCours/<%= item.id %>" class="btn actionBtn">update</a>
+              <a href="/deleteCours/<%= item.id %>" onclick="return confirm('vous etes entrain de supprimer le cours \' <%= item.titre %> \' !')" class="btn actionBtn">delete</a></td>
+          </tr>
+
+          <% }); %> 
+        </tbody>
+      </table>
+
+
+
+          <% }else if(user === "formateur"){%>
+            <p class="manage mt-1">
+              <a href="/addCours" class="btn manageBtn" >Ajouter un cours</a>
+            </p>
+                <table cellspacing="0" border="1" align="center" cellpadding="20" class="affTable">
+              <thead>
+                <tr>
+                  <th>Titre</th>
+                  <th>Montant</th>
+                  <th>Pdf</th>
+                  <th>Action</th>
+          
+                </tr>
+              </thead>
+              <tbody>
+            <% cours.forEach(item => { %>
+              <% console.log("helo helo ",item.tutor_id , formateurId) %>
+              <% if(item.tutor_id == formateurId){  %>
+              <tr>
+                <td><%= item.titre %></td>
+                <td><%= item.montant %></td>
+                <td><a href="https://hightower.ddns.net<%= item.cours_path %>"> Cours link </a></td>
+                  <td align="center"><a href="/updateCours/<%= item.id %>" class="btn actionBtn">update</a>
+                  <a href="/deleteCours/<%= item.id %>" onclick="return confirm('vous etes entrain de supprimer le cours \' <%= item.titre %> \' !')" class="btn actionBtn">delete</a></td>
+              </tr>
+              
+         
+       
+
+    <%} }); %> 
+  </tbody>
+</table>
+
+    <% }else{ %>  page not available<% } %>
+    

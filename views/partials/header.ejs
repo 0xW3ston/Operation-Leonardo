@@ -1,0 +1,157 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/"><img src="/images/logo.png" id="logo" alt="Lineopole"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon "></span>
+    </button>
+  
+    <div class="collapse navbar-collapse justify-content-center " id="navbarSupportedContent">
+      <ul class="navbar-nav  ">
+        <li class="nav-item mt-3 ">
+          <a class="nav-link nlink " href="/">
+               Acceuil
+          </a>
+        </li>
+    
+        <li class="nav-item dropdown mt-3">
+          <a class="nav-link dropdown-toggle nlink"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Formations  certifiantes
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/allFormations">Tous les formations</a>
+            <div class="dropdown-divider"></div>
+            <% for(let i = 0 ; i< 10 ;i++){ %>
+              <a class="dropdown-item" href="/formationDetails/<%= formations[i].id %>"><%= formations[i].label %></a>
+
+            <% } %>
+            
+        </div>
+        </li>
+
+        <li class="nav-item dropdown mt-3">
+          <a class="nav-link dropdown-toggle nlink"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Cours
+          </a>
+          
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/allCours">Tous les cours</a>
+            <div class="dropdown-divider"></div>
+
+
+            <% courses.forEach((cours)=>{ %>
+              <a class="dropdown-item cour" href="/coursDetails/<%= cours.id %>"><%= cours.titre %> 
+
+                <% if(cours.payant == 0 ){ %>
+                  <span class="gratuit">Gratuit</span>
+                <% } else {%>
+                  <span class="pay">Payant</span>
+                <% }%>
+              
+              
+              </a>
+            
+         <% })%>
+
+
+          </div>
+        </li>
+        <li class="nav-item mt-3 ">
+          <a class="nav-link nlink " href="#">
+               Contact
+          </a>
+        </li>
+        <!-- <li class="nav-item mt-3 mr-4 ml">
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2 search" type="search" placeholder="Search" aria-label="Search">
+          </form> 
+        </li> -->
+        <li class="nav-item mt-3 mr-4 ml">
+          <div class="dropdown">
+            <input class="form-control mr-sm-2 search" type="search" placeholder="Search" aria-label="Search">
+            <div class="dropdown-menu search-results" aria-labelledby="dropdownMenuLink"></div>
+          </div>
+          <div class="dropdown-menu dropdown-menu-sm search-results" aria-labelledby="dropdownMenuButton"></div>
+        </li>
+        <!-- Search Bar CSS to make it look smaller in width -->
+        <style>
+        .nav-item .form-control {
+          width: 200px;
+        }
+        .dropdown-item.smaller {
+          font-size: 70%;
+          padding: 0.25rem 1.5rem;
+        }
+        </style>
+        <% if(user === "secretaire" || user === "formateur"){ %>
+          <li class="nav-item mt-3 mr-2 ">
+            <a class="nav-link btn btn-sm nbtn"  href="/manage"  >
+              Manage
+            </a>
+          </li>
+
+        <% }; %>
+
+        <% if(user === "secretaire" || user === "user" || user === "formateur"){ %>
+          <li class="nav-item mt-3 mr-2 ">
+          <a class="nav-link btn btn-sm nbtn"  href="/logout"  >
+            Se deconnecter
+          </a>
+        </li>
+        <% } else {%>
+          <li class="nav-item mt-3 mr-3">
+            <a class="nav-link btn  btn-sm mb-1 nbtn" href="/login">
+                  Se connecter
+            </a>
+          </li>
+          <li class="nav-item mt-3 mr-3">
+            <a class="nav-link btn btn-sm nbtn"  href="/signup"  >
+              S'inscrire gratuitement
+            </a>
+          </li>
+       
+        <% }%>
+      
+   
+      
+        
+       
+
+
+      </ul>
+      
+    </div>
+  </nav>
+  
+      <!-- SEARCH BAR IMPLEMENTATION -->
+<script>
+  let timerId;
+  const searchInput = document.querySelector('.search');
+  const dropdownMenu = document.querySelector('.search-results');
+  
+  function searchCours() {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      const keyword = searchInput.value;
+      if (!keyword) {dropdownMenu.classList.remove('show'); return;};
+      fetch(`/api/cours?q=${keyword}`)
+        .then(response => response.json())
+        .then(data => {
+          dropdownMenu.innerHTML = '';
+          for (let i = 0; i < data.length; i++) {
+            const cours = data[i];
+            const item = document.createElement('a');
+            item.classList.add('dropdown-item');
+            item.classList.add('smaller');
+            item.href= '/coursDetails/' + cours.id;
+            item.innerText = cours.titre;
+            dropdownMenu.appendChild(item);
+          }
+          dropdownMenu.classList.add('show');
+        });
+    }, 500);
+  }
+
+  searchInput.addEventListener('keyup', searchCours);
+  searchInput.addEventListener('focus', searchCours);
+</script>
+</header>

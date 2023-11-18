@@ -1,0 +1,16 @@
+<div class="details" style="text-align: left;">
+    <% const ev = cours.description.split("\n"); %>
+    <h3><%= cours.titre %></h3>
+    <p>
+        <% ev.forEach(e => { %>
+            <%= e %> <br>
+        <% }); %>
+    </p>
+    <div>
+        <% if(cours.payant === 0 || etudientAcces.includes(etudient)){%>
+            <a href="/cour/<%= cours.id %>" > Check the cours</a> 
+        <% }else{%>
+            <p>Cours price : <%= cours.montant %>  <form method="POST" action="/pay"><input hidden name="courId" value="<%= cours.id %>"/><button type="submit">Buy</button></form> </p>
+        <%}%>
+    </div>
+</div>

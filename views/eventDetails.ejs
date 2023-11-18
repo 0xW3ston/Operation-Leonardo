@@ -1,0 +1,17 @@
+<div class="details">
+    <% const ev = events.description.split("\n"); %>
+    <h3><%= events.label %></h3>
+    <h5><%= events.caption %></h5>
+    <p>
+        <% ev.forEach(e => { %>
+            <%= e %> <br>
+        <% }); %>
+    </p>
+    <div>
+        <% console.log("pathh ",images)
+        images.map(path=> {  %>
+            <img src="<%= path.path %>" alt="">
+
+        <% }) %>
+    </div>
+</div>
